@@ -1,0 +1,109 @@
+.navbar .d-flex {
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sign-up__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12vh;
+}
+
+.sign-up__form {
+    background-color: var(--primary-hover);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    /* height: 60%; */
+    box-shadow: -13px 13px 11px -2px var(--secondary-hover);
+    border-radius: 8px;
+    padding: 2rem .5rem;
+    min-height: 420px;
+    min-width: 270px;
+}
+
+.sign-up__form h1 {
+    color: #333;
+    font-size: 2rem;
+}
+
+.sign-up__form > div {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:1rem;
+}
+
+.sign-up__form > h1 {
+    color: #333;
+    text-align: center;
+}
+
+.sign-up__form label {
+    display: block;
+    margin: 0;
+}
+
+.sign-up__form input {
+    border: none;
+    margin: 1rem auto;
+    width: 80%;
+    height: 2rem;
+    font-size: 10px bold;
+    border-radius: 2px;
+    outline-color: var(--primary-color);
+    padding-left: .5rem;
+}
+
+.sign-up__form input:focus {
+    background: rgb(238, 237, 237);
+}
+
+.sign-up__container .sign-up__form button {
+    background-color: var(--btn-color);
+    color: #000;
+    border: 1px solid var(--btn-color);
+    /* padding: 1.5% 5%; */
+    padding: .4rem .8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.sign-up__container .sign-up__form button:active,
+.sign-up__container .sign-up__form button:hover {
+    opacity: .9;
+}
+
+.login-section {
+    margin-top:1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section h5 {
+    font-size: 1rem;
+}
+
+.forward-login {
+    text-decoration: none;
+    color: #000;
+    transition: all .3s ease-in-out;
+}
+
+.forward-login:active,
+.forward-login:hover {
+    transform:scale(1.1);
+    color: var(--secondary-hover);
+}

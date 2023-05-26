@@ -1,0 +1,133 @@
+:root {
+  --primary-color: #64fcd9;
+  --primary-color-transparent: rgba(100, 252, 217, 0.7);
+  --secondary-color: #000;
+  --primary-hover: #6b8e86;
+  --secondary-hover: #463f3f;
+  --btn-color: #e77c7c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body * {
+  transition: all 0.4s ease-in-out;
+}
+
+h1 {
+  margin: 1.5rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+/* ------------------------------------  */
+
+/* Utilities */
+
+.button {
+  background-color: var(--btn-color);
+  padding: 0.5rem 1rem;
+  color: var(--secondary-color);
+  transition: all 0.4s ease-in-out;
+  border-radius: 2px;
+}
+
+.button:hover,
+.button:active {
+  text-decoration: none;
+  opacity: 0.9;
+  color: var(--secondary-color);
+}
+
+/* ------------------------------------ */
+
+/* Header  */
+
+#header {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+  z-index: 2;
+}
+
+.nav-container {
+  background-color: rgba(0, 0, 0, 0.9);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 0 4rem;
+  position: fixed;
+  margin: auto;
+  width: 100%;
+}
+
+#header nav a {
+  color: #fff;
+}
+
+#header nav a:active,
+#header nav a:hover {
+  color: #ccc;
+}
+
+.dropdown-item {
+  color: var(--secondary-color) !important;
+}
+
+#header .navbar-toggler {
+  padding: 0.3rem 0.75rem;
+}
+
+#header .navbar-toggler-icon svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+#header .form-inline button {
+  background-color: var(--primary-color-transparent);
+  color: var(--secondary-color);
+  transition: background 0.4s ease-in-out;
+}
+
+#header .form-inline button:hover,
+#header .form-inline button:active {
+  background-color: rgba(100, 252, 217, 0.4);
+  color: #fff;
+}
+
+.alert {
+  position: fixed;
+  width:none;
+  top: 5rem;
+  left: 5rem;
+  z-index:2;
+}
+
+.alert-dismissible .close {
+  padding: 0 !important;
+  top: 20%;
+  right: 10%;
+}
+
+#cke_id_content {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 920px) and (min-width: 321px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .nav-container {
+    padding: 0;
+  }
+}

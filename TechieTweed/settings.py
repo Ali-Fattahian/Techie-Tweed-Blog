@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from pathlib import Path
 import os
-from django.urls import reverse
 import dotenv
+import dj_database_url
 dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -43,15 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'user.apps.UserConfig',
-    # 'cloudinary_storage',
-    # 'cloudinary',
-    # 'core.apps.CoreConfig',
+    'cloudinary_storage',
+    'cloudinary',
     # 'verify_email.apps.VerifyEmailConfig',
     # 'registration'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'TechieTweed.wsgi.application'
 
 if not DEBUG:
     DATABASES= {
-        # 'default': 
+        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
     }
 else:
     DATABASES = {
@@ -134,36 +134,29 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-# MEDIA_URL = '/dummy_project/'
-# MEDIA_ROOT = 'uploads'
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+if not DEBUG:
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'df2vyrbdr',
-#     'API_KEY': '443917414288833',
-#     'API_SECRET': 'eGmwudJrNqoHOrdXRrNvbiQJOSY',
-# }
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# LOGIN_URL = 'log-in'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET')
+}
 
-# LOGIN_REDIRECT_URL = 'homepage'
-# LOGOUT_REDIRECT_URL = 'login'  # django built in login url
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = os.getenv('BLOG_EMAIL_PORT')
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('BLOG_EMAIL_HOST')
+EMAIL_HOST_PASSWORD = os.getenv('BLOG_EMAIL_HOST_PASSWORD')
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'instagram.django.clone@gmail.com'
-# EMAIL_HOST_PASSWORD = 'zrhkD7bVNx2F'
 
 # VERIFICATION_SUCCESS_TEMPLATE = None

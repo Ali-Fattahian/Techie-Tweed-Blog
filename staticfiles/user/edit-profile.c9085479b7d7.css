@@ -1,0 +1,140 @@
+#header {
+    position: fixed;
+}
+
+.nav-container {
+    position:static;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.edit-profile {
+    width: 100vw;
+    height: 100vh;
+    min-width: 495px;
+}
+
+.edit-profile__header {
+    background-color: rgba(100, 252, 217, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    padding-top: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.edit-profile__header-content {
+    margin-top: 2rem;
+}
+
+.img-container {
+    display: flex;
+}
+
+.img-container img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: black;
+    position: relative;
+    margin: auto;
+}
+
+.edit-profile__header a {
+    margin-top: .5rem;
+    display: inline-block;
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.user-info {
+    background-color: #6B8E86;
+    color: #fff;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-info > * {
+    margin: 2.5rem 0;
+}
+
+.user-info__inputs {
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));*/
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 204px;
+    grid-row-gap: 64px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.user-info__input {
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    text-align: left;
+    justify-content: center;
+}
+
+.user-info__input input,textarea {
+    width: 80%;
+    height: 40px;
+    margin: 0 auto;
+    padding-left: .7rem;
+    background-color: rgba(100, 252, 217, 0.7);
+    border: none;
+}
+
+.user-info__input textarea {
+    height: 120px;
+    padding-top: 1rem;
+}
+
+.user-info__input label {
+    text-align: left;
+    margin-bottom: 1.1rem;
+    margin-left: 10%;
+}
+
+.user-info__input:last-child {
+    margin-left: 10%;
+}
+
+.user-info__input:last-child input {
+    background-color: transparent;
+}
+
+#profile_picture-clear_id {
+    height: 30px;
+}
+
+.save-changes {
+    padding: .7rem 1.8rem;
+    background-color: var(--btn-color);
+    border-radius: 5px;
+    color: #000;
+    transition: all .4s ease-in-out;
+    border: none;
+}
+
+.save-changes:hover,
+.save-changes:active {
+    opacity: .9;
+}
+
+@media only screen and (max-width: 860px) {
+    .user-info__inputs {
+        grid-template-columns: 1fr;
+    }
+}
+
