@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+All The Posts
+{% endblock %}
+
+{% block css %}
+<link rel = 'stylesheet' href = '{% static 'core/post.css'%}'>
+<link rel = 'stylesheet' href = '{% static 'core/all-posts.css'%}'>
+{% endblock %}
+
+{% block content %}
+<section id = 'all-posts'>
+    <h2>All My Posts</h2>
+    <ul>
+        {% for post in all_posts %}
+         {% include 'core/includes/post.html'%}
+        {% endfor %}
+    </ul>
+    {% include 'pagination.html' with queryset=all_posts custome_range=custome_range %}
+</section>
+
+{% endblock %}

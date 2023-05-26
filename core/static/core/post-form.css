@@ -1,0 +1,60 @@
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.add-post__container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-top: 15vh;
+}
+
+.add-post__form {
+    background-color: #6B8E86;
+    color: #fff;
+    padding: 2rem 3rem;
+    width: 40%;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: -13px 13px 11px -2px var(--secondary-hover);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    min-width: 270px;
+}
+
+.form-field__section {
+    width: 100%;
+}
+
+.add-post__form label {
+    display: block;
+    text-align: left;
+}
+
+.add-post__form input, textarea {
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    outline-color: var(--primary-color);
+    padding-left: .5rem;
+}
+
+.add-post__form button {
+    border: none;
+    width: 5rem;
+    margin: auto;
+    margin-top: 2rem;
+}

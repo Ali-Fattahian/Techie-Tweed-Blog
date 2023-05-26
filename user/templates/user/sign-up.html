@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/sign-up.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="sign-up__container">
+        <form class="sign-up__form" action="{% url 'sign-up' %}" method="post">
+            {% csrf_token %}
+            <h1>Create Your Account</h1>
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.label }}">{{ field.label|title }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <p style="color:#57401f;">{{ error }}</p>
+                    {% endfor%}
+                </div>
+            {% endfor %}
+            <button type="submit">Sign Up</button>
+            <section class="login-section">
+                <h5>Already Have An Account?</h5>
+                <h5><a href="{% url 'sign-in' %}" class="forward-login">Sign In</a></h5>
+            </section>
+        </form>
+    </div>
+{% endblock %}

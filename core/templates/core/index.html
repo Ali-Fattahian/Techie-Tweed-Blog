@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block title %}
+ Welcome | HomePage
+ {% endblock %}
+
+{% block css %}
+    <style>
+        .newest-post {
+            {% if latest_post.image %}
+            background-image: url("{{ latest_post.image.url }}");
+            {% else %}
+            background-image: url("https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679899/default_post_image_apkr1g.jpg")
+            {% endif %}
+            position: relative;
+            top: 10%;
+            background-position: center;
+        }
+    </style>
+  <link rel = 'stylesheet' href = '{% static 'core/index.css'%}'>
+{% endblock %}
+
+ {% block content %}
+        <main id="main">
+        <section class="newest-post">
+            <h1>
+                {{ latest_post.title }}
+            </h1>
+            <p>
+                {{ latest_post.excerpt }}
+            </p>
+            <div class="meta-readmore">
+                <div class="meta">
+                    {% if latest_post.author.profile.profile_picture %}
+                        <img src="{{ latest_post.author.profile.profile_picture.url }}" alt="{{ latest_post.author.username }}" class="newest-post__author-picture">
+                    {% else %}
+                        <img src="https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679583/default_user_image_lwehod.png" alt="{{ latest_post.author.username }}" class="newest-post__author-picture">
+                    {% endif %}
+                    {% if lastest_post %}
+                    <div class="author-date">
+                        <h6><a href="{% url 'profile' latest_post.author.username %}">{{ latest_post.author.username }}</a></h6>
+                        <small>{{ latest_post.date_created }}</small>
+                    </div>
+                    {% endif %}
+
+                </div>
+                {% if lastest_post %}
+                <div class="read-more">
+                    <a href="{% url 'post' latest_post.slug %}" class="button">Read More</a>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <!-- Other New Posts Section -->
+
+    <section id="new-posts">
+        {% for post in posts %}
+          {% include 'core/includes/post.html'%}
+        {% endfor %}
+    </section>
+
+    {% endblock %}

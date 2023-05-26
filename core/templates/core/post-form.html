@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Add|Edit a post
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/post-form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="add-new-post">
+        <div class="add-post__container">
+            <form action="{% url 'add-new-post' %}" class="add-post__form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <h1>Add A New Post</h1>
+                {% for field in form %}
+                    {{ form.media }}
+                    <div class="form-field__section">
+                        <label for="{{ field.name }}">{{ field.label|title }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="button">Save</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

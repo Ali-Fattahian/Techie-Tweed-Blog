@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Edit Your Profile
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/edit-profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="edit-profile">
+        <div class="edit-profile__header">
+            <div class="edit-profile__header-content">
+                <div class="img-container">
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }} Profile Picture">
+                {% else %}
+                    <img src="https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679583/default_user_image_lwehod.png" alt="{{ profile.user.username }} Profile Picture">
+                {% endif %}
+                </div>
+                <a href="{% url 'profile' profile.user.username %}">{{ profile.user.username }}</a>
+            </div>
+        </div>
+        <form class="user-info" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Personal Information</h1>
+            <section class="user-info__inputs">
+                {% for field in form %}
+                <div class="user-info__input">
+                    <label for="{{ field.label }}">{{ field.label|title }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+            </section>
+            <button type="submit" class="save-changes">Save Changes</button>
+        </form>
+    </section>
+{% endblock %}

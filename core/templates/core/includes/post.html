@@ -1,0 +1,15 @@
+<div class="new-post__container">
+    <a class="new-post card" href="{% url 'post' post.slug %}">
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="newest-post__author-picture">
+        {% else %}
+            <img src="https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679899/default_post_image_apkr1g.jpg" alt="{{ post.title }}" class="newest-post__author-picture">
+        {% endif %}
+        <h1>
+            {{ post.title }}
+        </h1>
+        <p>
+           {{ post.excerpt }}
+        </p>
+    </a>
+</div>

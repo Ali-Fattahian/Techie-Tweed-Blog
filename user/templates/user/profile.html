@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/profile.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ user.username }} Profile
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="user-profile__container">
+            <section class="user-profile">
+                <div class="user-profile__picture">
+                {% if user.profile.profile_picture %}
+                    <img src="{{ user.profile.profile_picture.url }}" alt="{{ user.username }} Profile Picture">
+                {% else %}
+                    <img src="https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679583/default_user_image_lwehod.png" alt="{{ user.username }} Profile Picture">
+                {% endif %}
+                </div>
+                <div class="user-profile__bio">
+                    <p>
+                        {% if user.profile.bio %}
+                        {{ user.profile.bio }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="user-profile__info">
+                    <div class="info-name">
+
+                        {% if user.profile.first_name and not user.profile.last_name %}
+                            <h5>{{ user.profile.first_name }}</h5>
+                        {% elif user.profile.last_name and not user.profile.first_name %}
+                            <h5> {{ user.profile.last_name }}</h5>
+                        {% elif not user.profile.last_name and not user.profile.first_name %}
+                            <h5>Username : </h5>
+                        {% elif user.profile.first_name and user.profile.last_name %}
+                            <h5>{{ user.profile.first_name }} {{ user.profile.last_name }}</h5>
+                        {% endif %}
+
+                    </div>
+                    <div class="info-username">
+                        <h5>{{ user.username }}</h5>
+                    </div>
+                </div>
+                <div class="user-profile__accounts">
+                    <h2 class="accounts-heading">
+                        Accounts
+                    </h2>
+                    <ul class="accounts-links">
+                        {% if user.profile.social_facebook %}
+                        <a href="{{ user.profile.social_facebook }}" target="_blank" class="account-link button--linear">Facebook Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Facebook Account</a>
+                        {% endif %}
+
+                        {% if user.profile.social_whatsapp %}
+                        <a href="{{ user.profile.social_whatsapp }}" target="_blank" class="account-link button--linear">WhatsApp Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">WhatsApp Account</a>
+                        {% endif %}
+
+                        {% if user.profile.social_twitter %}
+                        <a href="{{ user.profile.social_twitter }}" target="_blank" class="account-link button--linear">Twitter Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Twitter Account</a>
+                        {% endif %}
+
+                        {% if user.profile.social_youtube %}
+                        <a href="{{ user.profile.social_youtube }}" target="_blank" class="account-link button--linear">Youtube Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Youtube Account</a>
+                        {% endif %}
+
+                        {% if user.profile.social_linkedin %}
+                        <a href="{{ user.profile.social_linkedin }}" target="_blank" class="account-link button--linear">Linkedin Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Linkedin Account</a>
+                        {% endif %}
+
+                        {% if user.profile.email %}
+                        <a href="mailto:{{ user.profile.email }}" target="_blank" class="account-link button--linear">Email</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Email</a>
+                        {% endif %}
+
+                        {% if user.profile.social_website %}
+                        <a href="{{ user.profile.social_website }}" target="_blank" class="account-link button--linear">Website</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Website</a>
+                        {% endif %}
+
+                        {% if user.profile.social_facebook %}
+                        <a href="{{ user.profile.social_facebook }}" target="_blank" class="account-link button--linear">Facebook Account</a>
+                        {% else %}
+                        <a href="#" class="account-link button--linear account-link--disabled">Facebook Account</a>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% if user.profile == request.user.profile %}
+                <div class="user-profile__edit">
+                    <a href="{% url 'edit-profile' user.profile.slug %}" class="edit-profile__link button--linear">Edit</a>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About Us
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/about.css' %}">
+{% endblock %}
+
+{% block content %}
+        <section class="about-section">
+            <div class="about__container">
+                <h1>About Techie Tweed</h1>
+                <p>Techie Tweed is a blog about technology and web development. Our goal is to create useful content for all our readers.</p>
+                <h1>Talk to us</h1>
+                <p>We love to here your opinions, you can use the link below to contact us and we will answer all your emails.</p>
+                <h1>Become a writer</h1>
+                <p>Yes! We are happy to have you as our new member. Send us an email that you want to write for our blog, that's all you have to do!</p>
+                <div class="button__container">
+                    <a href="mailto:techietweed@gmail.com" target="_blank" class="button">Contact us</a>
+                </div>
+                <div class="button__container">
+                    <a href="{% url 'homepage' %}" class="button">Homepage</a>
+                </div>
+            </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <form class="login-form" action="{% url 'sign-in' %}" method="post">
+            {% csrf_token %}
+            <h1>Welcome</h1>
+            <div class="username-section">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter Your Username">
+            </div>
+            <div class="password-section">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Your Password">
+            </div>
+            <div class="submit-reset-password">
+                <button type="submit">Log In</button>
+                <a href="{% url 'reset_password' %}">Forgot Your Password?</a>
+            </div>
+            <section class="register-section">
+                <h5>Don't Have An Account?</h5>
+                <h5><a href="{% url 'sign-up' %}" class="forward-sign-up">Sign Up</a></h5>
+            </section>
+        </form>
+    </div>
+{% endblock %}

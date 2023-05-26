@@ -1,0 +1,134 @@
+.navbar .d-flex {
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.login-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15vh;
+}
+
+.login-form {
+    background-color: var(--primary-hover);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    box-shadow: -13px 13px 11px -2px var(--secondary-hover);
+    border-radius: 8px;
+    padding: 2rem .5rem;
+    min-height: 420px;
+    min-width: 270px;
+    max-width: 670px;
+}
+
+.login-form > div {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:1rem;
+}
+
+.login-form > h1 {
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.login-form label {
+    display: block;
+    margin: 0;
+}
+
+.login-form input {
+    border: none;
+    margin: 1rem auto;
+    width: 80%;
+    height: 2rem;
+    font-size: 10px bold;
+    border-radius: 2px;
+    outline-color: var(--primary-color);
+    padding-left: .5rem;
+}
+
+.login-form input:focus {
+    background: rgb(238, 237, 237);
+}
+
+.login-container .login-form .submit-reset-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row;
+    width: 80%;
+}
+
+.submit-reset-password > a {
+    font-size: .9rem;
+}
+
+.submit-reset-password > a:hover,
+.submit-reset-password > a:active {
+    color: #fff;
+}
+
+.login-container .login-form button {
+    background-color: var(--btn-color);
+    color: #000;
+    border: 1px solid var(--btn-color);
+    /* padding: 1.5% 5%; */
+    padding: .4rem .8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.login-container .login-form button:active,
+.login-container .login-form button:hover {
+    opacity: .9;
+}
+
+.register-section {
+    margin-top:1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-section h5 {
+    font-size: 1rem;
+}
+
+.forward-sign-up {
+    text-decoration: none;
+    color: #000;
+    transition: all .3s ease-in-out;
+}
+
+.forward-sign-up:active,
+.forward-sign-up:hover {
+    transform:scale(1.1);
+    color: #fff;
+}
+
+@media screen and (max-width:820px) {
+    .login-container .login-form .submit-reset-password {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit-reset-password > a {
+        margin-top: .5rem;
+    }
+}

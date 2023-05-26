@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block title %} Reset your password {% endblock %}
+{% block css %}
+<style>
+  body {
+    background-color: #ddd;
+  }
+
+  .forgot-password__container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    padding-top: 15vh;
+    margin-bottom: 2rem;
+  }
+
+  .forgot-password label {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    display: block;
+  }
+
+  .forgot-password input {
+    border: none;
+    height: 2rem;
+    width: 100%;
+    border-radius: 2px;
+    outline-color: #fff;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .forgot-password form .button {
+    display: block;
+    background-color: var(--btn-color);
+    color: #000;
+    border: 1px solid var(--btn-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 5rem;
+  }
+</style>
+{% endblock %} {% block content %}
+<section class="forgot-password__container">
+  <div class="forgot-password">
+    <h3>Enter new password</h3>
+    <p>
+      Please enter your new password twice so we can verify you typed it in correctly.
+    </p>
+    <br>
+    <form method="post">
+      {% csrf_token %} {% for field in form %}
+      <label for="{{ field.name }}">{{ field.label|title }} :</label>
+      {{ field }} {% endfor %}
+      <button type="submit" class="button">Enter</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
