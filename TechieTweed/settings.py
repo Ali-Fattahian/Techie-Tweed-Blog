@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,8 +46,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'cloudinary_storage',
     'cloudinary',
-    # 'verify_email.apps.VerifyEmailConfig',
-    # 'registration'
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
@@ -103,8 +103,13 @@ else:
     }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
+
+CRONJOBS = [
+    ('0 0 * * 1', 'TechieTweed.cron.scheduled_backup') # Runs this function every monday at 00:00
+]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
