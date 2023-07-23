@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'cloudinary_storage',
     'cloudinary',
+    'ckeditor',
+    'ckeditor_uploader',
     'dbbackup',
 ]
 
@@ -87,7 +89,7 @@ WSGI_APPLICATION = 'TechieTweed.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 if not DEBUG:
-    DATABASES= {
+    DATABASES = {
         'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
     }
 else:
@@ -145,9 +147,11 @@ if not DEBUG:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_URL  = '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CKEDITOR_UPLOAD_PATH = "ckeditor/"
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
