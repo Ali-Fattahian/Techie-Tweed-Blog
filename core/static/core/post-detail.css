@@ -129,6 +129,7 @@ main {
   padding: 1vw 1.8vw;
   border-radius: 21px;
   text-align: center;
+  margin-top: 5px;
 }
 
 #comment-form {
@@ -267,7 +268,7 @@ main {
 #comment-form textarea {
   height: 100%;
   width: 100%;
-} 
+}
 
 #comment-form button {
   margin-top: 1.5rem;

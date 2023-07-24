@@ -108,7 +108,6 @@ p {
 #new-posts .new-post img {
   width: 100%;
   height: 20rem;
-  object-fit: cover;
 }
 
 #new-posts .new-post h1 {
@@ -179,7 +178,7 @@ p {
   .nav-container {
     padding: 0;
   }
-  
+
   #main .meta-readmore {
     display: block;
     padding: 0;

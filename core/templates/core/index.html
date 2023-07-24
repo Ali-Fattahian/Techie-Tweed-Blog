@@ -36,7 +36,7 @@
                     {% else %}
                         <img src="https://res.cloudinary.com/df2vyrbdr/image/upload/v1635679583/default_user_image_lwehod.png" alt="{{ latest_post.author.username }}" class="newest-post__author-picture">
                     {% endif %}
-                    {% if lastest_post %}
+                    {% if latest_post %}
                     <div class="author-date">
                         <h6><a href="{% url 'profile' latest_post.author.username %}">{{ latest_post.author.username }}</a></h6>
                         <small>{{ latest_post.date_created }}</small>
@@ -44,7 +44,7 @@
                     {% endif %}
 
                 </div>
-                {% if lastest_post %}
+                {% if latest_post %}
                 <div class="read-more">
                     <a href="{% url 'post' latest_post.slug %}" class="button">Read More</a>
                 </div>
