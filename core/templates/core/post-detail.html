@@ -39,7 +39,7 @@
                 <img src = "{{ one_post.image.url }}" alt = '{{ one_post.title }}'>
             </article>
             <div class="address">
-                <address>By <a href = "{% url 'profile' one_post.author.profile %}">{{ one_post.author }}</a></address>
+                <address>By <a href = "{% url 'profile' one_post.author.username %}">{{ one_post.author }}</a></address>
                 <div class="time">Last Updated on <time>{{ one_post.date|date:'d M Y'}}</time></div>
             </div>
         </section>
